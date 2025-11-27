@@ -1,0 +1,10 @@
+{
+  "openApiUrl": "https://petstore.swagger.io/v2/swagger.json",
+  "cacheTtl": 3600,
+  "cacheDir": ".cache",
+  "logLevel": "info",
+  "maxCacheSize": 100,
+  "requestTimeout": 30000,
+  "retryAttempts": 3,
+  "retryDelay": 1000
+}

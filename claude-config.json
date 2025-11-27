@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "openapi-crc": {
+      "command": "node",
+      "args": [
+        "/Users/vimalprakash/Documents/Projects/openapi-spec-mcp-server/dist/index.js",
+        "--url",
+        "https://crc-srv-827015814474.asia-south1.run.app/api-json"
+      ]
+    }
+  }
+}
