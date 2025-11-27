@@ -324,8 +324,9 @@ npm run clean
 - **HTTP Caching**: Respects ETags and Last-Modified headers
 - **TTL-based Expiration**: Configurable cache lifetime
 
-## Supported OpenAPI Versions
+## Supported Versions
 
+- Swagger 2.0 (automatically converted for compatibility)
 - OpenAPI 3.0.x
 - OpenAPI 3.1.x
 

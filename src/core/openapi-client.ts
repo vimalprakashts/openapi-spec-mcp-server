@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import * as yaml from 'yaml';
-import * as $RefParser from '@apidevtools/json-schema-ref-parser';
+import $RefParser from '@apidevtools/json-schema-ref-parser';
 import { OpenAPISpec } from '../types/openapi';
 import { CacheManager } from './cache-manager';
 
@@ -153,7 +153,7 @@ export class OpenAPIClient {
   private async resolveReferences(spec: any, _baseUrl: string): Promise<OpenAPISpec> {
     try {
       // Use json-schema-ref-parser to resolve all $ref references
-      const resolved = await ($RefParser as any).dereference(spec, {
+      const resolved = await $RefParser.dereference(spec, {
         resolve: {
           http: {
             read: async (file: any) => {
@@ -166,7 +166,7 @@ export class OpenAPIClient {
           },
         },
       });
-      
+
       return resolved as OpenAPISpec;
     } catch (error) {
       console.error(`Failed to fully resolve references: ${error}`);
@@ -176,21 +176,31 @@ export class OpenAPIClient {
   }
 
   private validateSpec(spec: OpenAPISpec): void {
-    // Basic validation
-    if (!spec.openapi) {
-      throw new Error('Invalid OpenAPI spec: missing openapi version');
+    // Basic validation - support both OpenAPI 3.x and Swagger 2.0
+    const version = (spec as any).openapi || (spec as any).swagger;
+
+    if (!version) {
+      throw new Error('Invalid spec: missing version field (openapi or swagger)');
     }
-    
-    if (!spec.openapi.startsWith('3.')) {
+
+    // Check if it's Swagger 2.0
+    if ((spec as any).swagger) {
+      if (!(spec as any).swagger.startsWith('2.')) {
+        throw new Error(`Unsupported Swagger version: ${(spec as any).swagger}. Only Swagger 2.x and OpenAPI 3.x are supported.`);
+      }
+      console.error(`Warning: This is a Swagger 2.0 spec. Consider upgrading to OpenAPI 3.x for better compatibility.`);
+      // Add openapi field for compatibility
+      (spec as any).openapi = '3.0.0';
+    } else if (!spec.openapi.startsWith('3.')) {
       throw new Error(`Unsupported OpenAPI version: ${spec.openapi}. Only OpenAPI 3.x is supported.`);
     }
-    
+
     if (!spec.info) {
-      throw new Error('Invalid OpenAPI spec: missing info object');
+      throw new Error('Invalid spec: missing info object');
     }
-    
+
     if (!spec.paths || Object.keys(spec.paths).length === 0) {
-      console.error('OpenAPI spec has no paths defined');
+      console.error('Warning: Spec has no paths defined');
     }
   }
 
