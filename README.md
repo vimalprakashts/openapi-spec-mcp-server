@@ -240,6 +240,20 @@ Refresh the OpenAPI specification from the server.
 }
 ```
 
+## Integration with Claude Code CLI
+
+For detailed instructions on using this MCP server with Claude Code CLI, see [CLAUDE_CODE_USAGE.md](./CLAUDE_CODE_USAGE.md).
+
+Quick setup:
+
+```bash
+# Add the server (after publishing to npm)
+claude mcp add openapi-prod -- npx vims-openapi-mcp --url https://api.example.com/openapi.json
+
+# Or use local build
+claude mcp add openapi-dev -- node /path/to/dist/index.js --url http://localhost:8080/swagger/doc.json
+```
+
 ## Integration with Claude Desktop
 
 Add this server to your Claude Desktop configuration:

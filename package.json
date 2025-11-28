@@ -9,7 +9,8 @@
   "files": [
     "dist",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CLAUDE_CODE_USAGE.md"
   ],
   "scripts": {
     "build": "tsc && chmod +x dist/index.js",
