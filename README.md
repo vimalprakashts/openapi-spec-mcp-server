@@ -1,4 +1,4 @@
-# OpenAPI Specification MCP Server
+# Vims OpenAPI MCP Server
 
 A Model Context Protocol (MCP) server that provides tools for interacting with OpenAPI specifications. This server allows Claude and other MCP clients to dynamically fetch, explore, and generate code from OpenAPI specs without loading the entire specification into context.
 
@@ -21,7 +21,7 @@ A Model Context Protocol (MCP) server that provides tools for interacting with O
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/openapi-spec-mcp-server.git
+git clone https://github.com/vimalprakashts/openapi-spec-mcp-server.git
 cd openapi-spec-mcp-server
 
 # Install dependencies
@@ -36,14 +36,14 @@ npm run build
 ### Command Line
 
 ```bash
-# Run with a URL
-node dist/index.js --url https://api.example.com/openapi.json
+# Run with npx (recommended)
+npx vims-openapi-mcp --url https://api.example.com/openapi.json
 
 # Run with custom cache settings
-node dist/index.js --url https://api.example.com/openapi.json --cache-ttl 7200 --cache-dir ./my-cache
+npx vims-openapi-mcp --url https://api.example.com/openapi.json --cache-ttl 7200 --cache-dir ./my-cache
 
 # Run with all options
-node dist/index.js \
+npx vims-openapi-mcp \
   --url https://api.example.com/openapi.json \
   --cache-ttl 3600 \
   --cache-dir .cache \
@@ -251,8 +251,8 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
 {
   "mcpServers": {
     "openapi": {
-      "command": "node",
-      "args": ["/path/to/openapi-spec-mcp-server/dist/index.js", "--url", "https://api.example.com/openapi.json"]
+      "command": "npx",
+      "args": ["vims-openapi-mcp", "--url", "https://api.example.com/openapi.json"]
     }
   }
 }
@@ -265,8 +265,8 @@ Edit `%APPDATA%\Claude\claude_desktop_config.json`:
 {
   "mcpServers": {
     "openapi": {
-      "command": "node",
-      "args": ["C:\\path\\to\\openapi-spec-mcp-server\\dist\\index.js", "--url", "https://api.example.com/openapi.json"]
+      "command": "npx",
+      "args": ["vims-openapi-mcp", "--url", "https://api.example.com/openapi.json"]
     }
   }
 }

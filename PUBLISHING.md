@@ -1,6 +1,6 @@
 # Publishing to npm
 
-This guide will help you publish this package to npm so it can be run via `npx openapi-mcp`.
+This guide will help you publish this package to npm so it can be run via `npx vims-openapi-mcp`.
 
 ## Prerequisites
 
@@ -39,10 +39,10 @@ Edit `LICENSE` file and update the copyright year and holder.
 ### 3. Check package name availability
 
 ```bash
-npm search openapi-spec-mcp-server
+npm search vims-openapi-mcp
 ```
 
-If the name is taken, choose a different one and update `package.json`.
+The name `vims-openapi-mcp` should be available. If taken, choose a different one and update `package.json`.
 
 ## Publishing Steps
 
@@ -70,10 +70,10 @@ npm run build
 npm link
 
 # Test the command works
-openapi-mcp --help
+vims-openapi-mcp --help
 
 # Unlink when done testing
-npm unlink -g openapi-mcp
+npm unlink -g vims-openapi-mcp
 ```
 
 ### 3. Verify package contents
@@ -108,10 +108,10 @@ npm publish --access public
 
 ```bash
 # Check your package page
-npm view openapi-spec-mcp-server
+npm view vims-openapi-mcp
 
 # Test with npx
-npx openapi-mcp --help
+npx vims-openapi-mcp --help
 ```
 
 ## Version Updates
@@ -152,7 +152,7 @@ npm publish
 
 ```bash
 # View package info
-npm view openapi-spec-mcp-server
+npm view vims-openapi-mcp
 
 # Check for outdated dependencies
 npm outdated
@@ -161,10 +161,10 @@ npm outdated
 npm update
 
 # Unpublish a version (only within 72 hours)
-npm unpublish openapi-spec-mcp-server@1.0.0
+npm unpublish vims-openapi-mcp@1.0.0
 
 # Deprecate a version
-npm deprecate openapi-spec-mcp-server@1.0.0 "Please upgrade to 1.0.1"
+npm deprecate vims-openapi-mcp@1.0.0 "Please upgrade to 1.0.1"
 ```
 
 ## After Publishing
@@ -172,15 +172,15 @@ npm deprecate openapi-spec-mcp-server@1.0.0 "Please upgrade to 1.0.1"
 Users can now install and use your package:
 
 ```bash
-# Run directly with npx (no installation)
-npx openapi-mcp --url https://api.example.com/openapi.json
+# Run directly with npx (no installation needed)
+npx vims-openapi-mcp --url https://api.example.com/openapi.json
 
 # Or install globally
-npm install -g openapi-spec-mcp-server
-openapi-mcp --url https://api.example.com/openapi.json
+npm install -g vims-openapi-mcp
+vims-openapi-mcp --url https://api.example.com/openapi.json
 
 # Or use in a project
-npm install openapi-spec-mcp-server
+npm install vims-openapi-mcp
 ```
 
 ## Troubleshooting

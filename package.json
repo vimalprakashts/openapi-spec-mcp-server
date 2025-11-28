@@ -1,10 +1,10 @@
 {
-  "name": "openapi-spec-mcp-server",
+  "name": "vims-openapi-mcp",
   "version": "1.0.3",
   "description": "MCP server for interacting with OpenAPI specifications",
   "main": "dist/index.js",
   "bin": {
-    "openapi-mcp": "./dist/index.js"
+    "vims-openapi-mcp": "./dist/index.js"
   },
   "files": [
     "dist",
